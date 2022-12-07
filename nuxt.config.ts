@@ -5,6 +5,12 @@ export default defineNuxtConfig({
     ],
     modules: ['@nuxtjs/tailwindcss', '@sidebase/nuxt-auth'],
     auth: {
-        origin: process.env.ORIGIN,
+        origin: process.env.NETLIFY
+          ? process.env.CONTEXT === 'production'
+            ? process.env.URL
+            : process.env.CONTEXT === 'dev'
+              ? 'http://localhost:8888'
+              : process.env.DEPLOY_PRIME_URL
+          : process.env.ORIGIN,
     }
 })
