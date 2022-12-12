@@ -13,5 +13,8 @@ export default defineNuxtConfig({
               : process.env.DEPLOY_PRIME_URL
           : process.env.ORIGIN,
         enableGlobalAppMiddleware: true
+    },
+    nitro: {
+      preset: 'netlify-edge'
     }
 })
